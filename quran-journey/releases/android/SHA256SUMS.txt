@@ -1,0 +1,2 @@
+44281ed075b07c26d1a8ae7442b674e0272c09901ed7c33af18288119d1b29d4  the-quran-journey-1.0.0.apk
+db5086ea15a3d2da37de81b2abcd5248fbbefcbe9a3893334426eb74e196bd45  the-quran-journey-1.0.0.aab

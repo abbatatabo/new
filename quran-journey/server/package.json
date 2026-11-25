@@ -1,0 +1,15 @@
+{
+  "name": "quran-journey-server",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Optional sync + content-management backend for The Quran Journey. Zero runtime dependencies.",
+  "type": "module",
+  "engines": { "node": ">=22.13" },
+  "scripts": {
+    "start": "node --no-warnings bin/server.js",
+    "seed": "node --no-warnings bin/seed.js",
+    "create-admin": "node --no-warnings bin/create-admin.js",
+    "test": "node --no-warnings --test test/*.test.js"
+  },
+  "license": "UNLICENSED"
+}

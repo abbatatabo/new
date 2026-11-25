@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root" android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:background="@drawable/widget_bg" android:padding="14dp">
+    <TextView android:id="@+id/ref" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:textColor="@color/qj_accent" android:textSize="11sp" android:textStyle="bold" android:letterSpacing="0.05"
+        android:maxLines="1" android:ellipsize="end" android:text="@string/brand_full" />
+    <TextView android:id="@+id/arabic" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginTop="6dp" android:textColor="@color/qj_ink" android:textSize="19sp"
+        android:fontFamily="@font/amiri_quran" android:gravity="end" android:textDirection="rtl" android:layoutDirection="rtl"
+        android:maxLines="2" android:ellipsize="end" android:lineSpacingMultiplier="1.05" />
+    <TextView android:id="@+id/translation" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"
+        android:layout_marginTop="4dp" android:textColor="@color/qj_ink_soft" android:textSize="12.5sp"
+        android:fontFamily="serif" android:maxLines="4" android:ellipsize="end" android:text="@string/widget_empty" />
+    <ProgressBar android:id="@+id/progress" style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent" android:layout_height="3dp" android:layout_marginTop="8dp"
+        android:max="1000" android:progress="0" android:progressDrawable="@drawable/widget_progress" />
+</LinearLayout>

@@ -1,0 +1,7 @@
+// Keeps the widget extension's version identical to the app's version.
+// Flutter writes FLUTTER_BUILD_NAME / FLUTTER_BUILD_NUMBER (from pubspec.yaml
+// `version:`) into Generated.xcconfig on every `flutter build` / `flutter run`.
+#include? "../Flutter/Generated.xcconfig"
+
+MARKETING_VERSION = $(FLUTTER_BUILD_NAME:default=1.0.0)
+CURRENT_PROJECT_VERSION = $(FLUTTER_BUILD_NUMBER:default=1)
