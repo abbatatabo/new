@@ -19,6 +19,7 @@ order, from Al-Fatihah to An-Nas, a few verses at a time, in three study session
 | Path | What it is |
 |---|---|
 | `app/` | Flutter app (Android + iOS), with native Android widgets (Kotlin) and an iOS WidgetKit extension (SwiftUI) |
+| `web/` | **Web app (PHP 8, no dependencies)**: the same study experience in any browser; see [web/README.md](web/README.md) |
 | `server/` | Optional backend: accounts, sync, content-management API and **admin dashboard** (Node 22, zero dependencies) |
 | `content/` | Verbatim source datasets, database schema and the integrity report |
 | `tools/build_content.py` | Builds and verifies the bundled database `app/assets/db/quran.db` |
@@ -29,6 +30,7 @@ order, from Al-Fatihah to An-Nas, a few verses at a time, in three study session
 ## Installing
 
 * **Android:** [docs/INSTALL-ANDROID.md](docs/INSTALL-ANDROID.md). Download `releases/android/the-quran-journey-1.0.0.apk` and install it.
+* **Web (any browser, including iPhone):** run or deploy `web/`; see [web/README.md](web/README.md).
 * **iPhone:** [docs/IOS.md](docs/IOS.md). This needs a Mac with Xcode; there is no IPA yet (see below).
 
 ## Technology choices and why

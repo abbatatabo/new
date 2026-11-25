@@ -1,0 +1,1 @@
+<div class="card" style="text-align:center;margin-top:40px"><h2>Page not found</h2><p class="muted" style="margin-top:6px">That page doesn't exist.</p><p style="margin-top:14px"><a class="btn" href="/">Back to today</a></p></div>

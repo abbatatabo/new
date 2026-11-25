@@ -16,6 +16,8 @@ macOS or Xcode.
 | Release APK | `flutter build apk --release` | Built (64.4 MB), signed with the v2 scheme by the release key, `apksigner verify` OK |
 | Release AAB | `flutter build appbundle --release` | Built (64.7 MB), signed |
 | Static analysis | `flutter analyze` | No issues |
+| PHP web app (unit + end-to-end HTTP) | `php web/tests/run.php` | **29 passed, 0 failed**; the study plan is identical to the Flutter app's (SHA-256 at 1/2/3/5 verses per study) |
+| PHP web app in Chromium (Playwright; phone light/dark and desktop) | scripted walkthrough | No console or CSP errors |
 
 ## What the suites cover
 

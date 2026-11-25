@@ -1,0 +1,7 @@
+# Apache: serve real files under /assets, route everything else to index.php
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [L]
+<FilesMatch "\.(ttf|svg|css|js)$">
+  Header set Cache-Control "public, max-age=604800"
+</FilesMatch>
