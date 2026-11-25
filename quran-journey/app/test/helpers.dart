@@ -16,5 +16,7 @@ Future<QuranDb> openRealQuranDb() async {
 
 Future<UserDb> openMemoryUserDb() async {
   sqfliteFfiInit();
-  return UserDb.open(path: inMemoryDatabasePath, factory: databaseFactoryFfiNoIsolate);
+  // A fresh file per call: sqflite shares ':memory:' between opens.
+  final dir = Directory.systemTemp.createTempSync('qj_user_');
+  return UserDb.open(path: '${dir.path}/user.db', factory: databaseFactoryFfiNoIsolate);
 }

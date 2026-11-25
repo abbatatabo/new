@@ -73,6 +73,7 @@ class _QuranJourneyAppState extends State<QuranJourneyApp> with WidgetsBindingOb
     super.initState();
     WidgetsBinding.instance.addObserver(this);
     final state = context.read<AppState>();
+    if (state.isTesting) return;
     try {
       final appLinks = AppLinks();
       _links = appLinks.uriLinkStream.listen((u) {

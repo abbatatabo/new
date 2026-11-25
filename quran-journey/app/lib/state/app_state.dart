@@ -143,6 +143,7 @@ class AppState extends ChangeNotifier {
   }
 
   bool _testing = false;
+  bool get isTesting => _testing;
 
   Future<void> _init() async {
     _bundledOverrides = await _loadBundledOverrides();
@@ -219,6 +220,15 @@ class AppState extends ChangeNotifier {
     unawaited(refreshSideEffects());
     unawaited(syncNow(quiet: true));
     return advanced;
+  }
+
+  /// Bumped whenever notes/bookmarks change so lists elsewhere refresh.
+  int dataVersion = 0;
+
+  void dataChanged() {
+    dataVersion++;
+    notifyListeners();
+    unawaited(syncNow(quiet: true));
   }
 
   Future<void> beginNewJourney() async {

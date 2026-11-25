@@ -185,19 +185,30 @@ class _Preferences extends StatelessWidget {
       children: [
         Text('Reading comfort', style: t.headlineMedium),
         const SizedBox(height: 18),
-        Surface(
-          margin: EdgeInsets.zero,
-          child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-            QuranText('ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَـٰلَمِينَ', size: 28 * set.arabicScale, align: TextAlign.center),
-            if (set.showTransliteration)
-              const Center(child: TransliterationText('Al<u>h</u>amdu lill<u>a</u>hi rabbi alAA<u>a</u>lameen<b>a</b>')),
-            const SizedBox(height: 6),
-            Text(
-              set.translationId == 1 ? 'Praise be to Allah, Lord of the Worlds,' : 'Praise be to Allah, the Cherisher and Sustainer of the worlds;',
-              textAlign: TextAlign.center,
-              style: serif(17, color: p.ink),
-            ),
+        // Preview text comes from the verified database, never hand-typed.
+        FutureBuilder<List<Object>>(
+          future: Future.wait<Object>([
+            st.quran.verses(2, 2),
+            st.quran.translationText(set.translationId, 2, 2),
+            st.quran.translationText(st.quran.transliteration.id, 2, 2),
           ]),
+          builder: (c, snap) {
+            if (!snap.hasData) return const SizedBox(height: 160);
+            final verse = (snap.data![0] as List).first as dynamic;
+            final tr = (snap.data![1] as Map<int, String>)[2] ?? '';
+            final tl = (snap.data![2] as Map<int, String>)[2] ?? '';
+            return Surface(
+              margin: EdgeInsets.zero,
+              child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+                QuranText(verse.arabic as String, size: 28 * set.arabicScale, align: TextAlign.center),
+                if (set.showTransliteration) Center(child: TransliterationText(tl)),
+                const SizedBox(height: 6),
+                Text(tr, textAlign: TextAlign.center, style: serif(17, color: p.ink)),
+                const SizedBox(height: 4),
+                Text('Al-Fatihah 1:2 · ${st.translation.name}', textAlign: TextAlign.center, style: t.bodySmall),
+              ]),
+            );
+          },
         ),
         const SizedBox(height: 18),
         Text('Arabic size', style: t.titleSmall),

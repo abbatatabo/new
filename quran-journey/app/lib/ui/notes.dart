@@ -24,7 +24,9 @@ class _NotesSectionState extends State<NotesSection> {
     _reload();
   }
 
-  void _reload() => _notes = context.read<AppState>().userDb.notesForStudy(widget.studyStart, widget.studyEnd);
+  void _reload() {
+    _notes = context.read<AppState>().userDb.notesForStudy(widget.studyStart, widget.studyEnd);
+  }
 
   Future<void> _edit([Note? n]) async {
     final saved = await showNoteEditor(context, studyStart: widget.studyStart, studyEnd: widget.studyEnd, note: n);
@@ -140,6 +142,6 @@ Future<bool> showNoteEditor(BuildContext context,
   } else {
     return false;
   }
-  st.syncNow(quiet: true);
+  st.dataChanged();
   return true;
 }

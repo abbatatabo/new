@@ -72,7 +72,7 @@ class _StudyScreenState extends State<StudyScreen> with SingleTickerProviderStat
     if (!mounted) return;
     setState(() => _bookmarked = existing == null);
     toast(context, existing == null ? 'Study saved' : 'Removed from saved');
-    st.syncNow(quiet: true);
+    st.dataChanged();
   }
 
   void _textSizeSheet() {
@@ -251,7 +251,7 @@ class _VerseBlockState extends State<_VerseBlock> {
       await st.userDb.addBookmark(BookmarkType.verse, v.id, v.id, label: '${st.surahName(v.surah)} ${v.key}');
     }
     if (mounted) setState(() => _saved = b == null);
-    st.syncNow(quiet: true);
+    st.dataChanged();
   }
 
   @override
@@ -302,7 +302,7 @@ class _VerseBlockState extends State<_VerseBlock> {
           ),
         ),
         if (set.showTransliteration && widget.transliteration.isNotEmpty) ...[
-          const SizedBox(height: 10),
+          SizedBox(height: 8 + 8 * set.arabicScale),
           TransliterationText(widget.transliteration, size: 14.5 * set.translationScale),
         ],
         const SizedBox(height: 10),
@@ -325,7 +325,12 @@ class TextSizeSheet extends StatelessWidget {
         child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
           Text('Reading', style: Theme.of(context).textTheme.titleLarge),
           const SizedBox(height: 16),
-          Center(child: QuranText('ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَـٰلَمِينَ', size: 28 * set.arabicScale, align: TextAlign.center)),
+          FutureBuilder<List<Verse>>(
+            future: st.quran.verses(2, 2), // 1:2, verbatim from the database
+            builder: (c, s) => s.hasData
+                ? Center(child: QuranText(s.data!.first.arabic, size: 28 * set.arabicScale, align: TextAlign.center))
+                : const SizedBox(height: 60),
+          ),
           Row(children: [
             Text('Arabic', style: sans(14, color: p.inkSoft)),
             Expanded(
@@ -436,7 +441,9 @@ class _VerseWordsState extends State<_VerseWords> {
                   : glossOk
                       ? null
                       : TextButton(
-                          onPressed: () => setState(() => _f = _load()),
+                          onPressed: () => setState(() {
+                            _f = _load();
+                          }),
                           child: const Text('Load meanings'),
                         )),
           if (snap.hasData && !glossOk)
@@ -481,7 +488,7 @@ class _WordTile extends StatelessWidget {
                 const SizedBox(height: 6),
                 Wrap(spacing: 6, runSpacing: 6, children: [
                   Tag(Morphology.stemPos(word)),
-                  if (word.rootAr != null) Tag('Root ${word.rootAr}', color: p.accent, background: p.accentSoft),
+                  if (word.rootAr != null) Tag('Root', arabic: word.rootAr, color: p.accent, background: p.accentSoft),
                 ]),
               ]),
             ),

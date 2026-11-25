@@ -41,7 +41,10 @@ class _LibraryScreenState extends State<LibraryScreen> {
   void _onChanged(String v) {
     _debounce?.cancel();
     _debounce = Timer(const Duration(milliseconds: 280), () {
-      setState(() => _results = v.trim().length < 2 ? null : _search(v.trim()));
+      final next = v.trim().length < 2 ? null : _search(v.trim());
+      setState(() {
+        _results = next;
+      });
     });
   }
 

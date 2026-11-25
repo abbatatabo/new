@@ -23,6 +23,7 @@ class _BookmarksScreenState extends State<BookmarksScreen> {
   Widget build(BuildContext context) {
     final st = context.watch<AppState>();
     final t = Theme.of(context).textTheme;
+    final v = '${st.dataVersion}-$_tick';
     return SafeArea(
       bottom: false,
       child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
@@ -47,7 +48,7 @@ class _BookmarksScreenState extends State<BookmarksScreen> {
               await st.syncNow();
               setState(() => _tick++);
             },
-            child: _seg == 2 ? _NotesList(key: ValueKey('n$_tick')) : _BookmarkList(key: ValueKey('b$_seg$_tick'), types: _seg == 0 ? {BookmarkType.verse} : {BookmarkType.study, BookmarkType.tafsir, BookmarkType.reflection}),
+            child: _seg == 2 ? _NotesList(key: ValueKey('n$v')) : _BookmarkList(key: ValueKey('b$_seg$v'), types: _seg == 0 ? {BookmarkType.verse} : {BookmarkType.study, BookmarkType.tafsir, BookmarkType.reflection}),
           ),
         ),
       ]),
@@ -97,7 +98,7 @@ class _BookmarkListState extends State<_BookmarkList> {
               ),
               onDismissed: (_) async {
                 await st.userDb.removeBookmark(b.id);
-                st.syncNow(quiet: true);
+                st.dataChanged();
                 if (context.mounted) toast(context, 'Removed');
               },
               child: ListTile(
@@ -159,7 +160,11 @@ class _NotesListState extends State<_NotesList> {
               margin: const EdgeInsets.fromLTRB(16, 0, 16, 10),
               onTap: () async {
                 final changed = await showNoteEditor(context, studyStart: n.studyStart, studyEnd: n.studyEnd, note: n);
-                if (changed && mounted) setState(() => _f = st.userDb.allNotes());
+                if (changed && mounted) {
+                  setState(() {
+                    _f = st.userDb.allNotes();
+                  });
+                }
               },
               child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                 Text(st.studyTitle(study).toUpperCase(), style: Theme.of(context).textTheme.labelSmall),

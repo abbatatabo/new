@@ -97,7 +97,8 @@ class Tag extends StatelessWidget {
   final Color? color;
   final Color? background;
   final IconData? icon;
-  const Tag(this.text, {super.key, this.color, this.background, this.icon});
+  final String? arabic; // optional Arabic suffix rendered in Amiri
+  const Tag(this.text, {super.key, this.color, this.background, this.icon, this.arabic});
 
   @override
   Widget build(BuildContext context) {
@@ -109,6 +110,10 @@ class Tag extends StatelessWidget {
       child: Row(mainAxisSize: MainAxisSize.min, children: [
         if (icon != null) ...[Icon(icon, size: 13, color: fg), const SizedBox(width: 4)],
         Text(text, style: sans(11.5, weight: FontWeight.w600, color: fg)),
+        if (arabic != null) ...[
+          const SizedBox(width: 5),
+          Text(arabic!, textDirection: TextDirection.rtl, style: arabicUi(14, fg, weight: FontWeight.w700).copyWith(height: 1.1)),
+        ],
       ]),
     );
   }

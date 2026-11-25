@@ -15,7 +15,7 @@
         android:maxLines="4" android:ellipsize="end" android:text="@string/widget_empty" />
     <TextView android:id="@+id/ref" android:layout_width="match_parent" android:layout_height="wrap_content"
         android:textColor="@color/qj_ink_faint" android:textSize="11sp" android:maxLines="1" />
-    <View android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginTop="10dp" android:layout_marginBottom="6dp" android:background="@color/qj_line" />
+    <FrameLayout android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginTop="10dp" android:layout_marginBottom="6dp" android:background="@color/qj_line" />
     <LinearLayout android:id="@+id/row0" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal"
         android:gravity="center_vertical" android:paddingTop="5dp" android:paddingBottom="5dp" android:visibility="gone">
         <TextView android:id="@+id/row0_mark" android:layout_width="22dp" android:layout_height="wrap_content" android:textColor="@color/qj_accent" android:textSize="13sp" android:textStyle="bold" />

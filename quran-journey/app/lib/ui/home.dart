@@ -103,13 +103,25 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class _NextStudyCard extends StatelessWidget {
+class _NextStudyCard extends StatefulWidget {
   final Study study;
   const _NextStudyCard({required this.study});
+  @override
+  State<_NextStudyCard> createState() => _NextStudyCardState();
+}
+
+class _NextStudyCardState extends State<_NextStudyCard> {
+  Future<List<Verse>>? _first;
+  Study? _for;
 
   @override
   Widget build(BuildContext context) {
+    final study = widget.study;
     final st = context.watch<AppState>();
+    if (_for != study) {
+      _for = study;
+      _first = st.quran.verses(study.startId, study.startId);
+    }
     final p = Palette.of(context);
     final surah = st.quran.surah(study.surah);
     final started = st.progress.completedVerses > 0;
@@ -131,7 +143,7 @@ class _NextStudyCard extends StatelessWidget {
             style: sans(14, color: p.onAccent.withValues(alpha: 0.8))),
         const SizedBox(height: 18),
         FutureBuilder<List<Verse>>(
-          future: st.quran.verses(study.startId, study.startId),
+          future: _first,
           builder: (c, snap) {
             final v = snap.data?.firstOrNull;
             if (v == null) return const SizedBox(height: 56);
