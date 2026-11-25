@@ -1,0 +1,168 @@
+{
+  "generated_at": "2026-11-25T04:23:43.298995+00:00",
+  "checks": [
+    {
+      "check": "Tanzil copyright block present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "114 surahs in Tanzil text",
+      "passed": true,
+      "detail": "114"
+    },
+    {
+      "check": "6236 verses in Tanzil text",
+      "passed": true,
+      "detail": "6236"
+    },
+    {
+      "check": "Per-surah verse counts match canonical Hafs (Kufan) counts",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Surah indexes are 1..114 in order",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "No empty verse text",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Bismillah attribute on verse 1 of every surah except 1 and 9",
+      "passed": true,
+      "detail": "112 surahs"
+    },
+    {
+      "check": "Simple-clean text: 6236 verses aligned with Uthmani keys",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Metadata has 114 surahs",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Metadata verse counts match text",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Metadata start offsets are cumulative",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "30 juz markers",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "604 page markers (Madinah mushaf)",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "15 sajdah verses",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "pickthall: 6236 verses",
+      "passed": true,
+      "detail": "6236"
+    },
+    {
+      "check": "pickthall: verse keys align with Quran text",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "pickthall: no empty verses",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "yusufali: 6236 verses",
+      "passed": true,
+      "detail": "6236"
+    },
+    {
+      "check": "yusufali: verse keys align with Quran text",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "yusufali: no empty verses",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "transliteration: 6236 verses",
+      "passed": true,
+      "detail": "6236"
+    },
+    {
+      "check": "transliteration: verse keys align with Quran text",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "transliteration: no empty verses",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "QAC copyright block present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "QAC has 128,219 segments (v0.4)",
+      "passed": true,
+      "detail": "128219"
+    },
+    {
+      "check": "QAC has 77,429 words",
+      "passed": true,
+      "detail": "77429"
+    },
+    {
+      "check": "Corpus word segmentation aligns with Tanzil tokens for >= 99% of verses",
+      "passed": true,
+      "detail": "6232/6236 aligned; misaligned: 4"
+    },
+    {
+      "check": "Stored Arabic text is byte-identical to Tanzil source",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "source_sha256": {
+    "tanzil_uthmani": "8c5aeae20363a98f6963720d29fce040ca8b56a8e75f8b564c257fce7f6d0417",
+    "tanzil_metadata": "8867c1d88191472adec9db694b3cd9f135b1a2ef580574d32cf888dcb22c5c7a",
+    "pickthall": "7d5bf4dc2b4d0568eec80b593171ce5c26032824609b8ab0fbd171dcd4486d6e",
+    "yusufali": "9c108bd8e0072d98edf2c4e810ca9e14f06b4343e0f2eacf1a11e2d01daa67a5",
+    "transliteration": "3444452f6110fce85d1f0ea2b477a9def1d990c1fb3bca5162912be0ed1a2ccf",
+    "qac_morphology": "a1d12923815341face765083805d2148ed2d9f5cc3f7d6665219d887675d8c46",
+    "tanzil_simple_clean": "140787b7c399b11d54bfa72c237075916084232efa8a4cddf704cc8a2a74b1fe"
+  },
+  "word_alignment": {
+    "aligned_verses": 6232,
+    "misaligned": [
+      "2:181 corpus=13 tanzil=14",
+      "8:6 corpus=11 tanzil=12",
+      "13:37 corpus=19 tanzil=20",
+      "37:130 corpus=3 tanzil=4"
+    ]
+  },
+  "arabic_text_sha256": "c787f3002b99299f4481a0874912fb5c2da9ed17fa763da23a1acbdee1660f58",
+  "database": {
+    "path": "app/assets/db/quran.db",
+    "bytes": 15638528
+  }
+}

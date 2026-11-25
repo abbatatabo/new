@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Branding: change the product name here and in lib/config/brand.dart -->
+    <string name="app_name">Quran Journey</string>
+    <string name="brand_full">The Quran Journey</string>
+    <string name="widget_small_label">Verse</string>
+    <string name="widget_medium_label">Today\'s study</string>
+    <string name="widget_large_label">Journey</string>
+    <string name="widget_small_desc">A verse from your current study</string>
+    <string name="widget_medium_desc">Your current study and today\'s progress</string>
+    <string name="widget_large_desc">Today\'s sessions and your journey</string>
+    <string name="widget_empty">Open the app to begin your journey</string>
+</resources>

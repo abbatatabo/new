@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="qj_bg">#FAF7F2</color>
+    <color name="qj_ink">#231F24</color>
+    <color name="qj_ink_soft">#5E5761</color>
+    <color name="qj_ink_faint">#948C96</color>
+    <color name="qj_line">#E7E0D8</color>
+    <color name="qj_accent">#5B3A63</color>
+    <color name="qj_accent_soft">#EFE6F0</color>
+</resources>
